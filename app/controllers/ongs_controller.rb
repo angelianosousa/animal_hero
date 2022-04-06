@@ -4,11 +4,7 @@ class OngsController < ApplicationController
   # GET /ongs
   # GET /ongs.json
   def index
-    if params[:id].nil?
-      @ongs = Ong.all
-    else
-      @ongs = Ong.where(id: params[:id])
-    end
+    @ongs = Ong.standard_scope(current_user)
   end
 
   # GET /ongs/1
