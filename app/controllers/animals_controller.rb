@@ -3,7 +3,7 @@ class AnimalsController < ApplicationController
 
   # GET /animals or /animals.json
   def index
-    @animals = Animal.all
+    @animals = Animal.standard_scope(current_user)
   end
 
   # GET /animals/1 or /animals/1.json
