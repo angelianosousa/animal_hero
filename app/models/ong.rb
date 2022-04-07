@@ -7,6 +7,6 @@ class Ong < ApplicationRecord
   }
 
   scope :_search_, -> (current_user, name){ 
-    where("user_id = ? AND lower(nome) LIKE ?", current_user.id, "%#{name}%")
+    where("user_id = ? AND lower(nome) LIKE ?", current_user.id, "%#{name.to_s.downcase}%")
   }
 end
