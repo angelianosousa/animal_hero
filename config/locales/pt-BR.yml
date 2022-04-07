@@ -8,6 +8,21 @@ pt-BR:
         name:                   'Nome'
         password:               'Senha'
         password_confirmation:  'Confirmação da senha'
+      ong:
+        user_id:                'ID User'
+        nome:                   'Nome'
+        email:                  'Email'
+        estado:                 'Estado'
+        logo:                   'Logotipo'
+      animal:
+        ong_id:                 'ID Ong'
+        name:                   'Nome'
+        race:                   'Raça'
+        species:                'Espécie'
+        sex:                    'Sexo'
+        weight:                 'Peso'
+        birthdate:              'Data de Nascimento'
+        situation:              'Situação'
       contact:
         name:                   'Nome'
         phone:                  'Telefone'
