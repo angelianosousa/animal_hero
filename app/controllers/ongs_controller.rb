@@ -4,12 +4,11 @@ class OngsController < ApplicationController
   # GET /ongs
   # GET /ongs.json
   def index
-    # if params[:q]
-    #   @q = Ong.ransack(params[:q])
-    #   @ongs = @q.result(distinct: true)
-    # else
+    if params[:nome]
+      @ongs = Ong._search_(current_user, params[:nome])
+    else
       @ongs = Ong.standard_scope(current_user)
-    # end
+    end
   end
 
   # GET /ongs/1
