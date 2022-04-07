@@ -4,7 +4,12 @@ class OngsController < ApplicationController
   # GET /ongs
   # GET /ongs.json
   def index
-    @ongs = Ong.standard_scope(current_user)
+    # if params[:q]
+    #   @q = Ong.ransack(params[:q])
+    #   @ongs = @q.result(distinct: true)
+    # else
+      @ongs = Ong.standard_scope(current_user)
+    # end
   end
 
   # GET /ongs/1
@@ -25,6 +30,7 @@ class OngsController < ApplicationController
   # POST /ongs.json
   def create
     @ong = Ong.new(ong_params)
+    @ong.user_id = current_user.id
 
     respond_to do |format|
       if @ong.save
