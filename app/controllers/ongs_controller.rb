@@ -1,11 +1,12 @@
 class OngsController < ApplicationController
+  before_action :require_logged_in_user
   before_action :set_ong, only: [:show, :edit, :update, :destroy]
 
   # GET /ongs
   # GET /ongs.json
   def index
     if params[:nome]
-      @ongs = Ong._search_(current_user, params[:nome])
+      @ongs = Ong._search_(current_user, params[:nome].strip)
     else
       @ongs = Ong.standard_scope(current_user)
     end
