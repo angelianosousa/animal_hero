@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h1>Editar Cadastro</h1>
+  </div>
+
+  <div class="col-md-6 col-md-offset-3 col-xs-12">
+    <%= form_for @user do |f| %>
+      <%= render 'form', f: f %>
+      <%= f.submit 'Salvar', class: 'btn btn-primary' %>
+      <%= link_to "Voltar", root_path, class:"btn btn-danger" %>
+    <% end %>
+  </div>
+</div>
