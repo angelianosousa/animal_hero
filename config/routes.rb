@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :animals
   resources :ongs
   # resources :users, only: [:new, :create, :show, :update, :edit]
   resources :users, except: [:index, :destroy]

@@ -1,0 +1,93 @@
+<%= form_with(model: animal, local: true) do |form| %>
+  <% if animal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(animal.errors.count, "error") %> prohibited this animal from being saved:</h2>
+
+      <ul>
+      <% animal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class='row'>
+    <div class='col-sm-4'>
+      <div class='form-group'>
+        <div class="field">
+          <%= form.label :name %>
+          <%= form.text_field :name, class:"form-control", placeholder:"Ex.: Spike" %>
+        </div>
+      </div>
+    </div>
+    <div class='col-sm-4'>
+      <div class='form-group'>
+        <div class="field">
+          <%= form.label :situation %>
+          <%= form.select :situation, ['Abandonado', 'Propriedade'], {}, {class:"form-control"} %>
+        </div>
+      </div>
+    </div>
+    <div class='col-sm-4'>
+      <div class='form-group'>
+        <div class="field">
+          <%= form.label :ong %>
+          <%= form.collection_select :ong_id, Ong.order(:name), :id, :nome, {}, {class:"form-control"} %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class='col-sm-4'>
+      <div class='form-group'>
+        <div class="field">
+          <%= form.label :species %>
+          <%= form.text_field :species, class:"form-control" %>
+        </div>
+      </div>
+    </div>
+    <div class='col-sm-4'>
+      <div class='form-group'>
+        <div class="field">
+          <%= form.label :sex %>
+          <%= form.select :sex, [['Macho', 'M'], ['Fêmea', 'F']], {}, {class:"form-control"} %>
+        </div>
+      </div>
+    </div>
+    <div class='col-sm-4'>
+      <div class='form-group'>
+        <div class="field">
+          <%= form.label :birthdate %>
+          <%= form.date_field :birthdate, class:"form-control" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class='row'>
+    <div class='col-md-6'>
+      <div class='form-group'>
+        <div class="field">
+          <%= form.label :race %>
+          <%= form.text_field :race, class:"form-control" %>
+        </div>
+      </div>
+    </div>
+    <div class='col-sm-6'>
+      <div class='form-group'>
+        <div class="field">
+          <%= form.label :weight %>
+          <%= form.number_field :weight, class:"form-control" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='btn-group'>
+    <div class="actions">
+      <%= form.submit "Salvar", class:"btn btn-primary" %>
+      <%= link_to 'Voltar', animals_path, class:"btn btn-danger" %>
+    </div>
+  </div>
+<% end %>
