@@ -5,9 +5,9 @@ class AnimalsController < ApplicationController
   # GET /animals or /animals.json
   def index
     if params[:name]
-      @animals = Animal._search_(current_user.ongs, params[:name].strip)
+      @animals = Animal._search_(current_user.ongs, params[:name].strip, params[:page])
     else
-      @animals = Animal.standard_scope(current_user)
+      @animals = Animal.standard_scope(current_user, params[:page])
     end
   end
 

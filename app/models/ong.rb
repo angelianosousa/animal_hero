@@ -3,9 +3,12 @@ class Ong < ApplicationRecord
   belongs_to :user
   has_many :animals, dependent: :destroy
 
+  # Kaminari config
+  paginates_per 10
+
   # Scope methods
-  scope :standard_scope, -> (current_user){ 
-    where(user: current_user).order(nome: :asc)
+  scope :standard_scope, -> (current_user, page){ 
+    where(user: current_user).order(nome: :asc).page(page)
   }
 
   scope :_search_, -> (current_user, name){ 

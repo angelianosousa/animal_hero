@@ -2,8 +2,11 @@ class Animal < ApplicationRecord
   enum situation: %w[Abandonado Propriedade]
   belongs_to :ong
 
-  scope :standard_scope, ->(current_user){ 
-    where(ong_id: current_user.ongs.ids).includes(:ong)
+  # Kaminari config
+  paginates_per 10
+
+  scope :standard_scope, ->(current_user, page){ 
+    where(ong_id: current_user.ongs.ids).includes(:ong).page(page)
   }
 
   scope :_search_, ->(ongs, name){ 

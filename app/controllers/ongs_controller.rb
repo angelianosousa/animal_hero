@@ -6,9 +6,9 @@ class OngsController < ApplicationController
   # GET /ongs.json
   def index
     if params[:nome]
-      @ongs = Ong._search_(current_user, params[:nome].strip)
+      @ongs = Ong._search_(current_user, params[:nome].strip, params[:page])
     else
-      @ongs = Ong.standard_scope(current_user)
+      @ongs = Ong.standard_scope(current_user, params[:page])
     end
   end
 
