@@ -4,7 +4,11 @@ class AnimalsController < ApplicationController
 
   # GET /animals or /animals.json
   def index
-    @animals = Animal.standard_scope(current_user)
+    if params[:name]
+      @animals = Animal._search_(current_user.ongs, params[:name].strip)
+    else
+      @animals = Animal.standard_scope(current_user)
+    end
   end
 
   # GET /animals/1 or /animals/1.json
